@@ -29,6 +29,15 @@
     #page-seach-results .card img {
         height: 150px;
     }
+
+    #page-create-point .field-group {
+        flex-direction: column;
+    }
+
+    #page-create-point .field-group .field + .field{
+        margin-left: 0;
+    }
+
 }
 
 @media (min-width: 1700px) {
