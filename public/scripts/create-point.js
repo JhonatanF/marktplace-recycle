@@ -59,14 +59,20 @@ let selectedItems = []
 function handleSelectedItem(event) {
     const itemLi = event.target
 
+    //adiciona ou remove uma classe com javascript
     itemLi.classList.toggle("selected")
 
-    const itemId = event.target.dataset.id
+    const itemId = itemLi.dataset.id
 
-
-    const alreadySelected = selectedItems.findIndex( item => item == itemId)
+    //verifica os itens selecionados, se tiver, pega os itens 
+    const alreadySelected = selectedItems.findIndex( item => {
+        const itemFound = item == itemId
+        return itemFound
+    } )
     
+    //se ja estiver selecionado
     if( alreadySelected >= 0 ){
+        //tira a seleção
         const filteredItems = selectedItems.filter( item => {
             const itemIsDifferent = item != itemId
             return itemIsDifferent    
@@ -74,9 +80,13 @@ function handleSelectedItem(event) {
 
         selectedItems = filteredItems
     } else {
+        //se nao estiver selecionado, add
         selectedItems.push(itemId)
     }
 
+    // atualiza o campo escondido com os itens selecionados
     collectedItems.value = selectedItems
+
+    
     
 }
